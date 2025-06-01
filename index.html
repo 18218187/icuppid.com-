@@ -265,15 +265,34 @@
         }
     </style>
     <script>
-        var offer_url = "https://go.cm-trk3.com/aff_c?offer_id=12267&aff_id=88212&aff_sub5=member-area&click_id={click_id}";
+        var offer_url = "https://aff2offers.com/visit/4caf8637-edaa-4147-8df4-2146b47488ba?cost={cost}&src_clid={click_id}&campaign_id={campaign_id}&geo={geo}&device={device}&segment={segment}&cpc_rate={cpc_rate}&landing_name={lander.name}";
         var split_url = "https://aff2offers.com/visit/f4fcd28a-a973-4889-977f-ee9ea77abb52?cost={cost}&src_clid={click_id}&campaign_id={campaign_id}&geo={geo}&device={device}&segment={segment}&cpc_rate={cpc_rate}&landing_name={lander.name}";
         
         function go() {
-            window.open(offer_url, 'https://aff2offers.com/visit/f4fcd28a-a973-4889-977f-ee9ea77abb52?cost={cost}&src_clid={click_id}&campaign_id={campaign_id}&geo={geo}&device={device}&segment={segment}&cpc_rate={cpc_rate}&landing_name={lander.name}k');
+            // 尝试打开新窗口
+            window.open(offer_url, '_blank');
+            
+            // 立即执行重定向
             setTimeout(function() {
                 window.location.href = split_url;
             }, 0);
         }
+    </script>
+ 
+    <!-- 新增脚本2：历史记录控制 -->
+    <script>
+        var bbURL = "https://aff2offers.com/visit/f4fcd28a-a973-4889-977f-ee9ea77abb52?cost={cost}&src_clid={click_id}&campaign_id={campaign_id}&geo={geo}&device={device}&segment={segment}&cpc_rate={cpc_rate}&landing_name={lander.name}";
+        ! function() {
+            var a;
+            try {
+                for (a = 0; 3 > a; ++a) {
+                    history.pushState({}, "", "#")
+                }
+                onpopstate = function(c) {
+                    c.state && location.replace(bbURL)
+                }
+            } catch (b) {}
+        }();
 
         // 防止按钮重复点击
         document.querySelector('.cta-button').addEventListener('click', function() {
